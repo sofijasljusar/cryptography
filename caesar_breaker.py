@@ -29,26 +29,3 @@ print(f"Decrypted message: {decrypted_message}")
 # gluhtlishjrvbadvyyplkaohavbyjpwolypzavvdlhrvuuleatlzzhnlzdpajoavcpnlulyljpwolyrlfdvykpzaolopkkluzftivsvmklhaoputfmhcvypalovsilpuluk
 # message 2
 # vwduw ljudeehghyhubwklqjlfrxogilqgsohdvhuhwxuqdqbeoxhsulqwviruydxowd qgdodupghvljqedvhgrqzklfkedqnbrxghflghrqldpvhwwlqjxsvdihkrxvhfr
-
-
-# PREVIOUS CODE - improvements as comments
-# import statistics  # no need to import the whole module
-# encrypted_message = input("Type your encrypted message:")
-# letters = [*encrypted_message]
-
-# made it a function
-# most_frequent = statistics.mode([char for char in letters if char != ' '])   # switched to more efficient Counter
-# disadvantages of counter - extracting value may be verbose
-# alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-# key = (alphabet.index(most_frequent) - alphabet.index("e"))%26
-
-# made it a function
-# decrypted_letters = []
-# for x in letters:
-#     if x == " ":
-#         decrypted_letters.append(" ")
-#     else:
-#         encrypted_index = alphabet.index(x.lower())
-#         decrypted_letters.append(alphabet[(encrypted_index-key)%26])
-# decrypted_letters[0] = decrypted_letters[0].upper()
-# print(f"Decrypted message: {''.join(decrypted_letters)}")
