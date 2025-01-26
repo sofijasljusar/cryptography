@@ -16,6 +16,7 @@ alphabet_spiral = [
     ["a", "t", "s", "r", "q", "p"]
 ]
 
+
 def decrypt_polybius_square(text):
     letters = ""
     numbers = [int(char) for char in text]
@@ -35,13 +36,14 @@ def decrypt_polybius_spiral(text):
     return letters
 
 
-encryption_type = input("Enter 'square' or 'spiral':")
-encrypted_message = input("Type your encrypted message:")
-if encryption_type == 'square':
-    decrypted_message = decrypt_polybius_square(encrypted_message)
-elif encryption_type == 'spiral':
-    decrypted_message = decrypt_polybius_spiral(encrypted_message)
-print(f"Decrypted message: {decrypted_message}")
+if __name__ == "__main__":
+    encryption_type = input("Enter 'square' or 'spiral':")
+    encrypted_message = input("Type your encrypted message:")
+    if encryption_type == 'square':
+        decrypted_message = decrypt_polybius_square(encrypted_message)
+    elif encryption_type == 'spiral':
+        decrypted_message = decrypt_polybius_spiral(encrypted_message)
+    print(f"Decrypted message: {decrypted_message}")
 
 
 # code 1
