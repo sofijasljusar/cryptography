@@ -6,7 +6,7 @@ secret_message = ('startcibcbankseeschematicsforalarmandvault'
                   '5567meetatblackoutend')
 
 # secret_message = "abc"
-# secret_message = "fff"
+# secret_message = "hello"
 # secret_message = "bbb"
 
 
@@ -15,7 +15,7 @@ polybius_encrypted = encrypt_polybius(secret_message)
 print(f"step 1 {polybius_encrypted}\n\n")
 
 # STEP 2 - convert to base 2
-message_in_binary = convert_between_bases(polybius_encrypted, 1, 10, 2)
+message_in_binary = convert_between_bases(polybius_encrypted, 1, 10, 2, 3)
 print(f"step 2 {message_in_binary}\n\n")
 
 # STEP 3 - XOR with one-time pad
@@ -27,7 +27,7 @@ print(f"step 3"
 
 # STEP 4 - divide into 4 digits and convert to base-10
 # STEP 5 - convert to base 4
-encrypted_message = convert_between_bases(xored_message, 4, 2, 4)
+encrypted_message = convert_between_bases(xored_message, 4, 2, 4, 2)
 print(f"encrypted message {encrypted_message}")
 
 # STEP 6 - angles from message (make tkinter program!)

@@ -47,16 +47,19 @@ def convert_to_base(number, to_base):
     return result[::-1]
 
 
-def convert_list_to_base(list_of_numbers, to_base):
+def convert_list_to_base(list_of_numbers, to_base, append_to):
     """Function that takes a list of integers and converts to any given base.
      Each number is taking up the same amount of spaces (zero filled to length required by maximum number in list).
     Returns converted string """
+    # FIXED
     #  this 2 lines caused edge case bug (encryption):
     #  when only messages that contain symbols that produce only 0-3 in row/column
     #  binary conversion in step 2 did not append to 3 0s, as maximum (3) produced (11) which is 2 digits
     # so need to state explicitly, instead of dynamically
-    maximum_length = len(convert_to_base(max(list_of_numbers), to_base))
-    converted_list = [convert_to_base(number, to_base).zfill(maximum_length) for number in
+    # maximum_length = len(convert_to_base(max(list_of_numbers), to_base))
+    # print(maximum_length)
+    # print(list_of_numbers)
+    converted_list = [convert_to_base(number, to_base).zfill(append_to) for number in
                       list_of_numbers[:len(list_of_numbers)]]
     # print(converted_list)
     converted_string = "".join(converted_list)
@@ -84,12 +87,12 @@ def adjust_length(string, expected_length):
     return string
 
 
-def convert_between_bases(string_of_numbers: str, divide_into: int, from_base: int, to_base: int) -> str:
+def convert_between_bases(string_of_numbers: str, divide_into: int, from_base: int, to_base: int, append_to: int) -> str:
     """Function that takes a list of integers,
     converts from any base to any base,
     and returns converted string"""
     base_10 = convert_string_from_base(string_of_numbers, divide_into, from_base)
-    given_base = convert_list_to_base(base_10, to_base)
+    given_base = convert_list_to_base(base_10, to_base, append_to)
     return given_base
 
 
@@ -118,7 +121,7 @@ if __name__ == "__main__":
     # STEP 2 - convert to binary
     # 1) convert from any base (this case base 4) to base 10
     # 2) convert from base 10 to any base (this case base 2)
-    angles_in_binary = adjust_length(convert_between_bases(ANGLES, 2, 4, 2), MESSAGE_LENGTH)
+    angles_in_binary = adjust_length(convert_between_bases(ANGLES, 2, 4, 2, 4), MESSAGE_LENGTH)
     print(f"step 2 {angles_in_binary}\n\n")
 
     # STEP 3 - XOR with one-time pad
@@ -132,7 +135,7 @@ if __name__ == "__main__":
           f"\nxored {xored_binary}\n\n")
 
     # STEP 4 - divide into 3 digits and convert to base 10
-    polybius_encrypted = convert_between_bases(xored_binary, 3, 2, 10)
+    polybius_encrypted = convert_between_bases(xored_binary, 3, 2, 10, 1)
     print(f"step 4 {polybius_encrypted}\n\n")
 
     # STEP 5 - use polybius spiral to decode message
